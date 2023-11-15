@@ -1,18 +1,13 @@
 package accesodatos;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
-public class Ej5p1 {
+public class Ej5p2 {
 
-	
-	/*2)Aumenta el documento de lectura hasta la letra "e" en líneas diferentes (a, b, c, d, e) y crea un método que las escriba en otro de forma inversa. 
-	 * Sin usar ARRAYS ni BUFFER.
-*/
-	
 	public static void main(String[] args) {
+		/*3)Añade un número a cada letra (a1, b2, c3, d4, e5) y realiza la misma operación anterior. Debe quedar e5 d4 c3 b2 a1.*/
 		
 		String letras = "";
 		String algo = "";
@@ -30,7 +25,7 @@ public class Ej5p1 {
 			}
 			
 			for(int i=letras.length()-1;i>=0;i--) {
-				otro.writeChars(letras.charAt(i)+"\n");
+				otro.writeChars(i+"\n");
 			}
 		
 		} catch (FileNotFoundException e) {
@@ -40,18 +35,8 @@ public class Ej5p1 {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-	}
-	
-	public static void inverso(RandomAccessFile fichero) {
-		String ave = "";
-		try {
-			ave = fichero.readLine();
-			System.out.println(ave);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
+		
 	}
 
 }
