@@ -14,7 +14,7 @@ public class Ej5p1 {
 	
 	public static void main(String[] args) {
 		
-		String letras = "abcde";
+		String letras = "";
 		String algo = "";
 		
 		
@@ -27,11 +27,11 @@ public class Ej5p1 {
 				fichero.seek(i);
 				algo = fichero.readLine();
 				System.out.println(algo);
+				letras = letras + algo;
 			}
 			
-			for(int i=(int)otro.length();i>0;i--) {
-				otro.seek(i);
-				otro.write(algo.charAt(i));
+			for(int i=letras.length()-1;i>=0;i--) {
+				otro.writeChars(letras.charAt(i)+"\n");
 			}
 		
 		} catch (FileNotFoundException e) {
