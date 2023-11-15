@@ -6,12 +6,17 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Collections;
 
-public class Ej3 {
+public class Ej4LuisaC {
 
+	
 	public static void main(String[] args) throws IOException {
 	//Variable para guardar la letra
+	String donde = "C:\\Users\\lcardozo\\git\\repository\\AccesoDatos";
 	char letra=' ';
+	String[] palabras;
 	//El archivo que se quiere leer
 	File archivo = new File("palabras.txt");
 	//Donde se va a guardar la palabra de 5 letras
@@ -21,9 +26,11 @@ public class Ej3 {
 	//La linea completa que se lee del fichero
 	String linea = "";
 
-	String donde = "C:\\Users\\lcardozo\\git\\repository\\AccesoDatos";
 	File newArchivo = new File(donde,"nuevoFichero.txt");
-	BufferedWriter bw = new BufferedWriter(new FileWriter(newArchivo));
+	
+	File nuevoFichero = new File(donde,"palabrasOrdenadas.txt");
+	
+	BufferedWriter bw = new BufferedWriter(new FileWriter(nuevoFichero));
 	
 	//EL buffered reader para leer el archivo
 	try (BufferedReader br = new BufferedReader(new FileReader(archivo)))
@@ -45,16 +52,34 @@ public class Ej3 {
 				//Se inserta un salto de linea 
 				palabra+="\n";
 			//y se reinicia el contador a 0
-				contador=0;	
+				contador=0;
 			} 
 			}
 		}
-		System.out.println(palabra);
+		//System.out.println(palabra);
 		//Con el buffered writer escribimos todo lo que se ha guardado en palabra
-	bw.write(palabra);
+	//bw.write(palabra);
 	//Cerramos el buffered writer
-	bw.close();
 		
+		//==================ESTA ES LA PARTE DEL EJERCICIO 4=========================
+	
+		//Hacemos un split de la palabra que escribimos en el fichero, cortamos por los saltos de linea
+	palabras = palabra.split("\n");
+	//Ordenamos las palabras
+	Arrays.sort(palabras);
+	
+	//System.out.println(Arrays.toString(palabras));
+	//En caso de que no exita el fichero lo creamos
+	if(!nuevoFichero.exists()) {
+		nuevoFichero.createNewFile();
+	}
+	//Recorremos el array y en cada iteracion, que equivale en este caso a una palabra
+	//Escribimos la palabra en el fichero junto con un \n para que muestre cada palabra en una linea
+	for (int i=0;i<palabras.length;i++) {
+		bw.write(palabras[i]+"\n");
+	}
+	//Cerramos el escritor
+	bw.close();
 	} catch (IOException e) {
 		e.printStackTrace();
 	}

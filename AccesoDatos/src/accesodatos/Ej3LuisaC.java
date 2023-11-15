@@ -7,7 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Ej3 {
+public class Ej3LuisaC {
 
 	public static void main(String[] args) throws IOException {
 	//Variable para guardar la letra
@@ -45,7 +45,7 @@ public class Ej3 {
 				//Se inserta un salto de linea 
 				palabra+="\n";
 			//y se reinicia el contador a 0
-				contador=0;	
+				contador=0;
 			} 
 			}
 		}
