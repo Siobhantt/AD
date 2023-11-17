@@ -3,6 +3,7 @@ package accesodatos;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.Iterator;
 
 public class Ej5p2 {
 
@@ -13,19 +14,23 @@ public class Ej5p2 {
 		String algo = "";
 		
 		try {
-		
 			RandomAccessFile fichero = new RandomAccessFile("ficheroC.txt","rw");
 			RandomAccessFile otro = new RandomAccessFile("ficheroD.txt","rw");
 			
-			for(int i=0;i<fichero.length();i++) {
+			for(int i=0;i<fichero.length();i=i+2) {
 				fichero.seek(i);
 				algo = fichero.readLine();
-				System.out.println(algo);
-				letras = letras + algo;
+				//System.out.println(algo);
+				letras = letras + algo + "\n";
 			}
+			System.out.println(letras);
+		
 			
 			for(int i=letras.length()-1;i>=0;i--) {
-				otro.writeChars(i+"\n");
+				
+				System.out.print(letras.charAt(i));
+		
+				otro.writeChar(letras.charAt(i));
 			}
 		
 		} catch (FileNotFoundException e) {
