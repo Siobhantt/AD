@@ -12,27 +12,26 @@ public class Ej5p2 {
 		
 		String letras = "";
 		String algo = "";
-		
+		int pos =0;
 		try {
 			RandomAccessFile fichero = new RandomAccessFile("ficheroC.txt","rw");
 			RandomAccessFile otro = new RandomAccessFile("ficheroD.txt","rw");
 			
-			for(int i=0;i<fichero.length();i=i+2) {
+			for(int i=(int) fichero.length();i<=0;i--) {
 				fichero.seek(i);
 				algo = fichero.readLine();
-				//System.out.println(algo);
 				letras = letras + algo + "\n";
 			}
-			System.out.println(letras);
+			//System.out.println(letras);
 		
-			
+			/*
 			for(int i=letras.length()-1;i>=0;i--) {
 				
 				System.out.print(letras.charAt(i));
 		
 				otro.writeChar(letras.charAt(i));
 			}
-		
+		*/
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

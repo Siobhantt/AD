@@ -24,7 +24,7 @@ public class Ej5LuisaC {
 
 		try {
 			// abro el fichero en rw(significa read and wirte)
-			RandomAccessFile ficheroA = new RandomAccessFile("ficheroA.txt", "rw");
+			RandomAccessFile ficheroA = new RandomAccessFile("ficheroA.txt", "r");
 			// Ubico en la posicion 0 que es donde esta la letra a
 			ficheroA.seek(0);
 			// Leo el fhicero y lo que encuentre lo guardo en la variable letra

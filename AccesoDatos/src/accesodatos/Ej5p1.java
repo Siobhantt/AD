@@ -16,12 +16,38 @@ public class Ej5p1 {
 		
 		String letras = "";
 		String algo = "";
-		
+		//Variable auxiliar para usar el bucle en dos direcciones
+		int posicion = 0;
 		try {
 		
-			RandomAccessFile fichero = new RandomAccessFile("ficheroC.txt","rw");
-			RandomAccessFile otro = new RandomAccessFile("ficheroD.txt","rw");
+			RandomAccessFile fichero = new RandomAccessFile("ficheroC.txt","r");
+			RandomAccessFile fichero2 = new RandomAccessFile("ficheroD.txt","rw");
+			//Recorro el fichero desde el final
+			for(int i= (int) fichero.length()-1;i>=0;i--) {
+				//ubico el puntero al final
+				fichero2.seek(0);
+				fichero.seek(i);
+				//guardo lo que sea que se lea en la varibale algo
+				//Como hay posiciones que devuelven null y no se por que
+				algo = fichero.readLine();
+				//en caso de que sea distinto a nul
+				if(algo!=null && algo!="") {
+					//Imprimo algo para ver que si guarda la letras
+					//System.out.println(algo);
+					//A la variable letra le concateno lo que este leyendo
+					letras = letras + algo+"\n";
+					//pongo el puntero en el principio del otro fichero
+					fichero2.seek(posicion);
+					//Escribo lo que sea que este en letra
+					fichero2.writeUTF(letras);
+					//avanzo en el segundo fichero
+					posicion++;
+				}
+				//fichero2.writeChars(letras.charAt(posicion)+"\n");	
+				
+			}
 			
+		/*	
 			for(int i=0;i<fichero.length();i++) {
 				fichero.seek(i);
 				algo = fichero.readLine();
@@ -30,8 +56,12 @@ public class Ej5p1 {
 			}
 			
 			for(int i=letras.length()-1;i>=0;i--) {
-				otro.writeChars(letras.charAt(i)+"\n");
-			}
+				fichero.seek(i);
+				algo =fichero.readLine();
+				System.out.println(algo);
+				letras = letras + algo;
+				
+			}*/
 		
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
