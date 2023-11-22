@@ -7,7 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
-public class Ej5LuisaC {
+public class Ej1LuisaC {
 
 	/*
 	 * 1)Crea un documento de texto con una única letra "a" que será leído de forma
